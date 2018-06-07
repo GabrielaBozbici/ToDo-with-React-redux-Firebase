@@ -1,11 +1,11 @@
 module.exports = {
   // Change this to your firebase configuration! (Add Firebase to your web app)
   FIREBASE_CONFIG: {
-    apiKey: 'AIzaSyD-6woF05Da3nWszTwloRe8il99Z_YjEYc',
-    authDomain: 'cryptal-8bcca.firebaseapp.com',
-    databaseURL: 'https://cryptal-8bcca.firebaseio.com',
-    projectId: 'cryptal-8bcca',
-    storageBucket: 'cryptal-8bcca.appspot.com',
-    messagingSenderId: '609126296259'
+    apiKey: "AIzaSyCEYHQuWiUNMBQcvz0SnWxF35xZsteCj40",
+  authDomain: "medicalid-83da5.firebaseapp.com",
+  databaseURL: "https://medicalid-83da5.firebaseio.com",
+  projectId: "medicalid-83da5",
+  storageBucket: "medicalid-83da5.appspot.com",
+  messagingSenderId: "930087850285"
   },
 };

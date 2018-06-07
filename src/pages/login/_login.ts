@@ -3,6 +3,7 @@ import { ApplicationState } from '../../redux/reducers';
 import Login from './Login';
 import { reduxForm } from 'redux-form';
 import { login } from '../../redux/auth/creators';
+import { AuthState } from '../../redux/auth/interface';
 
 export interface OwnOptionalProps {
   handleSubmit: any;
@@ -11,7 +12,7 @@ export interface OwnOptionalProps {
 export interface OwnProps extends Partial<OwnOptionalProps> { }
 
 export interface StateProps {
-  auth: any;
+  auth: AuthState;
 }
 
 export interface DispatchProps {

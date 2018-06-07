@@ -7,9 +7,11 @@ export default function reducer(state: UiState = initialState, action: any) {
   switch (action.type) {
 
     case types.SHOW_MODAL: {
+      const newModalData = {...action.payload.data};
       return {
         ...state,
-        activeModal: action.payload,
+        activeModal: action.payload.modalName,
+        modalData: {...newModalData}
       };
     }
 
@@ -17,6 +19,7 @@ export default function reducer(state: UiState = initialState, action: any) {
       return {
         ...state,
         activeModal: null,
+        modalData: null
       };
     }
 
