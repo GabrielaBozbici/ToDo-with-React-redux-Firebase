@@ -46,10 +46,13 @@ export default class Home extends React.Component<Props,{}> {
   }
 
   handleCheck = (todo: Todo) => {
-    console.log('blaaa');
     const {auth, editTodo } = this.props;
-    todo.completed = !todo.completed;
-    editTodo(auth.user.uid, todo);
+    const newTodo = Object.assign({}, todo); 
+    // it needs a new object in order to loose the previous refernce. The todo should not be mutated here
+    // because redux get's confused and the ui does not update!
+    newTodo.completed = !newTodo.completed;
+    
+    editTodo(auth.user.uid, newTodo);
   }
   render() {
     const {handleSubmit, todos} = this.props;

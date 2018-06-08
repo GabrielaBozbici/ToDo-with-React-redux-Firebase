@@ -8,7 +8,6 @@ export function createTodoStart() {
 }
 
 export function createTodoSuccess(todo: Todo) {
-    console.log('success');
     return {
       type: types.CREATE_TODO_SUCCESS,
       payload: todo
@@ -29,7 +28,6 @@ export function getTodosStart () {
 }
 
 export function getTodosSuccess(todos: Todo[]) {
-  console.log('success');
   return {
     type: types.GET_TODOS_SUCCESS,
     payload: todos

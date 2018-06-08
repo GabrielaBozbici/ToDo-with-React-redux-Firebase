@@ -52,7 +52,6 @@ export default function reducer(state: TodoState = TodoInitialState, action: any
       };
     }
     case types.DELETE_TODO_SUCCESS: {
-      console.log('deleted success');
       let newList = [...state.list];
       let found: any = newList.find((element) => {
         return element.id === action.payload.id;
@@ -80,22 +79,16 @@ export default function reducer(state: TodoState = TodoInitialState, action: any
       };
     }
     case types.EDIT_TODO_SUCCESS: {
-      console.log('action.payload: ', action.payload);
-      // const newState = Object.assign({}, state);
-      let newList = [...state.list];
-      let found: any = newList.find((element) => {
-        return element.id === action.payload.id;
+      const newList = state.list.map(element => {
+        if(element.id === action.payload.id) {
+          return action.payload;
+        }
+        return element;
       });
-      let idx = state.list.indexOf(found);
-      // newList.splice(idx,1,action.payload);
-      // newList[idx] = action.payload;
+    
       return {
         ...state,
-        list: [
-          ...state.list,
-          ...newList.splice(idx,1,action.payload),
-          
-        ]
+        list: newList
       };
     }
     case types.EDIT_TODO_ERROR: {
