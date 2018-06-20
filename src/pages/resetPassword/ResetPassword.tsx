@@ -4,7 +4,6 @@ import { Field } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { Link } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
-const logo = require('../../assets/logo/complete-white.svg');
 
 interface Props {
   resetPasswordByEmail: (email: any) => {};
@@ -24,9 +23,6 @@ export default class ResetPasword extends React.Component<Props, OwnProps> {
     return (
       <section className="public-pages">
         <div className="reset-password">
-          <div className="logo-wrap">
-            <img src={logo} alt="logo" className="logo" />
-          </div>
           <div className="box-content">
             <div className="box-header">
               <h6 className="h6">Reset Password</h6>

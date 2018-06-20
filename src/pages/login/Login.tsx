@@ -6,7 +6,6 @@ import { Link } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import { StateProps, DispatchProps, OwnProps } from './_login';
 import { browserHistory } from 'react-router';
-const logo = require('../../assets/logo/complete-white.svg');
 
 export type Props = StateProps & OwnProps & DispatchProps;
 
@@ -31,9 +30,6 @@ export default class Login extends React.Component<Props, {}> {
     return (
       <section className="public-pages">
         <div className="login">
-          <div className="logo-wrap">
-            <img src={logo} alt="logo" className="logo" />
-          </div>
           <div className="box-content">
             <div className="box-header">
               <h6 className="h6">Log into your account</h6>
@@ -83,8 +79,16 @@ export default class Login extends React.Component<Props, {}> {
             </form>
           </div>
           <footer>
-            <Link to="/register" activeClassName="active">Register</Link>
-            <Link to="/resetPassword" activeClassName="active">*Reset password</Link>
+            <div className="register">
+              <p>Don't have an account yet?</p>
+              <Link to="/register" activeClassName="active">Register</Link>
+            </div>
+            <div className="resetPassword">
+            <p>Forgot your password?</p>
+              <Link to="/resetPassword" activeClassName="active">
+                Reset password
+              </Link>
+            </div>
           </footer>
         </div>
       </section>

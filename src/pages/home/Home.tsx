@@ -1,17 +1,19 @@
 import * as React from 'react';
 import { StateProps, DispatchProps, OwnProps } from './_home';
 
-import { Flex } from 'grid-styled';
-
-import RaisedButton from 'material-ui/RaisedButton';
 import { Field } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 
 import { Todo } from  '../../redux/todo/interface';
 
-import Delete from 'material-ui/svg-icons/action/delete';
+import Power_off from 'material-ui/svg-icons/action/power-settings-new';
+
+import Donut from 'material-ui/svg-icons/action/donut-large';
+import Person from 'material-ui/svg-icons/social/person';
+import Add_Circle_Outline from 'material-ui/svg-icons/content/add-circle-outline';
 import Edit from 'material-ui/svg-icons/image/edit';
 import Check from 'material-ui/svg-icons/navigation/check';
+import Delete from 'material-ui/svg-icons/action/delete';
 import IconButton from 'material-ui/IconButton';
 
 import EditTodo from '../../modals/editTodo';
@@ -19,6 +21,10 @@ import EditTodo from '../../modals/editTodo';
 export type Props = StateProps & OwnProps & DispatchProps;
 
 export default class Home extends React.Component<Props,{}> {
+
+  handleAccount = () => {
+    console.log('this will be a link to the persons account');
+  }
   logout = () => {
     const { logoutUser } = this.props;
     logoutUser();
@@ -26,13 +32,16 @@ export default class Home extends React.Component<Props,{}> {
 
   submitForm = (v: any) => {
     const { createTodo, auth } = this.props;
-    const todo = {
-      name: v.name,
-      description: v.description,
-      completed: false,
-      date: new Date().getTime()
-    };
-    createTodo(todo, auth.user.uid);
+    if(v.name) {
+      const todo = {
+        name: v.name,
+        completed: false,
+        date: new Date().getTime()
+      };
+      createTodo(todo, auth.user.uid);
+    } else {
+      console.log('empty space');
+    }
   }
 
   handleDelete = (todo: Todo) => {
@@ -54,63 +63,62 @@ export default class Home extends React.Component<Props,{}> {
     
     editTodo(auth.user.uid, newTodo);
   }
-  render() {
-    const {handleSubmit, todos} = this.props;
-    return (
-      <div className="Home">
-        <h1 className="page-header">Home page</h1>
-        <button onClick={this.logout} className="logoutButton">Logout</button>
-        <Flex className="page-content" >
-        <form onSubmit={handleSubmit(this.submitForm)}>
-              <div className="input-wrap">
-                <Field
-                  component={TextField}
-                  floatingLabelFixed={true}
-                  floatingLabelText={'Todo'}
-                  fullWidth={true}
-                  name="name"
-                  className="input-wrapper input"
-                />
-              </div>
-              <div className="input-wrap">
-                <Field
-                  component={TextField}
-                  floatingLabelFixed={true}
-                  floatingLabelText={'Description'}
-                  fullWidth={true}
-                  name="description"
-                  className="input-wrapper input"
-                />
-              </div>
-              <RaisedButton
-                fullWidth={true}
-                type="submit"
-                label="Submit"
-                primary={true}
-                style={{ marginTop: '20px' }}
-              />
-        </form>
-        </Flex>
-        <div className="todoList">
-         {todos.map((todo: Todo ) => {
-           return (
-            <li key={todo.id} className="todoItem">
-            {todo.name}
-            <IconButton className="deleteButton" aria-label="Delete" onClick={() => this.handleDelete(todo)}>
-              <Delete />
-            </IconButton>
-            <IconButton className="editButton" aria-label="Edit" onClick={() => this.handleEdit(todo)}>
-              <Edit />
-            </IconButton>
-            <IconButton className="checkButton" aria-label="Check" onClick={() => this.handleCheck(todo)}>
-              <Check className={todo.completed ? 'itemChecked' : ''}/>
-            </IconButton>
-            </li>
-           );
-         })}
-        </div>
-        <EditTodo />
+    render() {
+      const {handleSubmit, todos} = this.props;
+      return (
+        <div className="Home container">
+            <div className="logo">
+              <Donut />
+              <p>React Redux Firebase</p>
+            </div>
+            <div className="buttons">
+              <IconButton onClick={this.handleAccount} className="accountButton">
+                <Person />
+                <div><p>Account</p></div>
+              </IconButton>
+              <IconButton onClick={this.logout} className="logoutButton">
+                <div><Power_off /></div>
+                <div><p>Log out</p></div>
+              </IconButton>
+            </div>
+            <form onSubmit={handleSubmit(this.submitForm)} className="form">
+                  <div className="input-wrap">
+                    <Field
+                      component={TextField}
+                      // floatingLabelFixed={true}
+                      placeholder="Write your todo here..."
+                      // floatingLabelText={'Add one to-do here:'}
+                      name="name"
+                      className="input-wrapper input"
+                    />
+                    <IconButton className="addButton" aria-label="Add" type="submit">
+                      <Add_Circle_Outline/>
+                    </IconButton>
+                  </div>
+            </form>
+          <div className="todoList">
+          {todos.map((todo: Todo ) => {
+            return (
+              <li key={todo.id} className="todoItem">
+              <IconButton className="checkButton" aria-label="Check" onClick={() => this.handleCheck(todo)}>
+                <Check className={todo.completed ? 'itemChecked' : ''}/>
+              </IconButton>
+              <h4 className={todo.completed ? 'todoTextDone' : 'todoText'}>{todo.name}</h4>
+              <IconButton className="editButton" aria-label="Edit" onClick={() => this.handleEdit(todo)}>
+                <Edit />
+              </IconButton>
+              <IconButton className="deleteButton" aria-label="Delete" onClick={() => this.handleDelete(todo)}>
+                <Delete />
+              </IconButton>
+              </li>
+            );
+          })}
+          </div>
+          <EditTodo />
+          <div className="page-footer">
+            here will be the footer
+          </div>
       </div>
-    );
+      );
   }
 }

@@ -58,7 +58,14 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #eee; }
+    background-color: #eee;
+    text-align: center; }
+    .login footer .register {
+      width: 50%; }
+    .login footer .resetPassword {
+      width: 50%; }
+    .login footer p {
+      font-size: 10px; }
   .login .styledRouterLink {
     color: #333;
     text-decoration: none;
@@ -111,20 +118,57 @@
     color: crimson;
     margin: 5px 0; }
 
-.page-header {
-  text-align: center; }
-
-.logoutButton {
-  float: right; }
-
-.todoList {
-  padding-top: 40px; }
-
-.todoItem {
-  margin-top: 30px; }
-
-.deleteButton {
-  margin-left: 40px; }
-
-.itemChecked {
-  color: #01b9ff !important; }
+.container {
+  display: grid;
+  padding-left: 70px;
+  padding-right: 70px;
+  grid-template-columns: 20% 30% 30% 20%;
+  grid-template-rows: auto;
+  grid-template-areas: "logo ... ... buttons" "... form form addButton" "... todoList todoList ..." "footer footer footer footer";
+  justify-content: center; }
+  .container .logo {
+    grid-area: logo; }
+    .container .logo p {
+      display: inline-block;
+      font-size: 10px; }
+  .container .title {
+    grid-area: title; }
+  .container .buttons {
+    grid-area: buttons;
+    justify-self: end; }
+    .container .buttons p {
+      font-size: 12px; }
+  .container .form {
+    grid-area: form;
+    justify-self: center; }
+  .container .addButton {
+    grid-area: addButton; }
+  .container .todoList {
+    grid-area: todoList;
+    list-style: none;
+    padding-top: 40px; }
+    .container .todoList .todoItem {
+      margin-top: 30px;
+      border-bottom: 1px dotted #666; }
+      .container .todoList .todoItem .todoText {
+        display: inline-block;
+        width: 300px;
+        text-align: center; }
+      .container .todoList .todoItem .todoTextDone {
+        display: inline-block;
+        width: 300px;
+        text-align: center;
+        font-style: italic;
+        font-weight: normal;
+        text-decoration: line-through; }
+      .container .todoList .todoItem .todoItem :hover {
+        background-color: bisque; }
+    .container .todoList .deleteButton {
+      margin-left: 40px; }
+    .container .todoList .itemChecked {
+      color: #01b9ff !important; }
+  .container .page-footer {
+    grid-area: footer;
+    justify-self: strech;
+    align-self: flex-end;
+    border: 1px solid red; }

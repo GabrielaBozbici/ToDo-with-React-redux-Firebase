@@ -5,7 +5,6 @@ import { Link } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import { StateProps, DispatchProps, OwnProps } from './_register';
 import { browserHistory } from 'react-router';
-const logo = require('../../assets/logo/complete-white.svg');
 
 export type Props = StateProps & OwnProps & DispatchProps;
 
@@ -30,9 +29,6 @@ export default class Login extends React.Component<Props, {}> {
     return (
       <section className="public-pages">
         <div className="register">
-          <div className="logo-wrap">
-            <img src={logo} alt="logo" className="logo" />
-          </div>
           <div className="box-content">
             <div className="box-header">
               <h6 className="h6">Register</h6>

@@ -1,23 +1,80 @@
-.page-header {
-    text-align: center;
-}
+.container {
+    display: grid;
+    padding-left: 70px;
+    padding-right: 70px;
+    grid-template-columns: 20% 30% 30% 20%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "logo ... ... buttons"
+    "... form form addButton"
+    "... todoList todoList ..."
+    "footer footer footer footer";
+    justify-content: center;
+        .logo {
+            grid-area: logo;
+            p {
+                display: inline-block;
+                font-size: 10px;
+            }
+        }
+        .title {
+            grid-area: title;
+        }
+        .buttons {
+            grid-area: buttons;
+            justify-self: end;
+            p {
+                font-size: 12px;
+            }
+        }
+        .form{
+            grid-area: form;
+            justify-self: center;
+        }
+        .addButton {
+            grid-area: addButton;
+        }
+    
+    .todoList {
+        grid-area: todoList;
+        list-style: none;
+        padding-top: 40px;
+        .todoItem {
+            margin-top: 30px;
+            border-bottom: 1px dotted #666;
+            .todoText {
+                display: inline-block;
+                width: 300px;
+                text-align: center;
+            }
+            .todoTextDone {
+                display: inline-block;
+                width: 300px;
+                text-align: center;
+                font-style: italic;
+                font-weight: normal;
+                text-decoration: line-through;
+            }
+        .todoItem :hover {
+            background-color: bisque;
+        }
+        }
+        
+        .deleteButton {
+            margin-left: 40px;
+        }
+        
+        .itemChecked {
+            color: #01b9ff !important;
+        }
+    }
+    .page-footer{
+        grid-area: footer;
+        justify-self: strech;
+        align-self: flex-end;
 
-.logoutButton {
-    float: right;
-}
+        border: 1px solid red;
 
-.todoList {
-    padding-top: 40px;
-}
-
-.todoItem {
-    margin-top: 30px;
-}
-
-.deleteButton {
-    margin-left: 40px;
-}
-
-.itemChecked {
-    color: #01b9ff !important;
+    }
+    
 }

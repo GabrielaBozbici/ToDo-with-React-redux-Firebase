@@ -21,6 +21,16 @@
     flex-direction: row;
     align-items: center;
     background-color: #eee;
+    text-align: center;
+    .register {
+      width: 50%;
+    }
+    .resetPassword {
+      width: 50%;
+    }
+    p {
+      font-size: 10px;
+    }
   }
   .styledRouterLink {
     color: #333;
