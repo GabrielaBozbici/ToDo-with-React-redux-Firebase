@@ -1,6 +1,7 @@
 import { Todo } from './interface';
 import * as actions from './actions';
 import { firebaseDb } from '../../firebase';
+import {reset} from 'redux-form';
 
 export function createTodo(todo: Todo, userID: string) {
     // firebase functions  
@@ -15,6 +16,7 @@ export function createTodo(todo: Todo, userID: string) {
                 dispatch(actions.createTodoError(error));
             } else {
                 dispatch(actions.createTodoSuccess(todo));
+                dispatch(reset('todo'));
             }
         });
     };

@@ -2,15 +2,20 @@
   display: grid;
   padding-left: 70px;
   padding-right: 70px;
+  height: 100%;
   grid-template-columns: 20% 30% 30% 20%;
-  grid-template-rows: auto;
+  grid-template-rows: 5% 10% auto 5%;
   grid-template-areas: "logo ... ... buttons" "... form form addButton" "... todoList todoList ..." "footer footer footer footer";
   justify-content: center; }
   .container .logo {
-    grid-area: logo; }
+    grid-area: logo;
+    display: flex;
+    align-items: center; }
     .container .logo p {
       display: inline-block;
       font-size: 10px; }
+    .container .logo svg {
+      color: #03A9F4 !important; }
   .container .title {
     grid-area: title; }
   .container .buttons {
@@ -49,6 +54,7 @@
       color: #01b9ff !important; }
   .container .page-footer {
     grid-area: footer;
+    margin-top: 70px;
     justify-self: strech;
     align-self: flex-end;
-    border: 1px solid red; }
+    text-align: center; }

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StateProps, DispatchProps, OwnProps } from './_home';
+import * as _ from 'lodash';
 
 import { Field } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
@@ -64,7 +65,12 @@ export default class Home extends React.Component<Props,{}> {
     editTodo(auth.user.uid, newTodo);
   }
     render() {
+      let year: any = new Date().getFullYear();
       const {handleSubmit, todos} = this.props;
+      const filteredTodos = _.sortBy(todos, [(o: any) => {
+        return o.date;
+      }]).reverse();
+      
       return (
         <div className="Home container">
             <div className="logo">
@@ -72,32 +78,40 @@ export default class Home extends React.Component<Props,{}> {
               <p>React Redux Firebase</p>
             </div>
             <div className="buttons">
-              <IconButton onClick={this.handleAccount} className="accountButton">
-                <Person />
-                <div><p>Account</p></div>
-              </IconButton>
-              <IconButton onClick={this.logout} className="logoutButton">
-                <div><Power_off /></div>
-                <div><p>Log out</p></div>
-              </IconButton>
+              <IconButton 
+                onClick={this.handleAccount} 
+                className="accountButton"
+                style={{width: 'auto'}}
+                children={
+                  <Person />
+                }
+                tooltip={'Your account'}
+              />
+              <IconButton 
+                onClick={this.logout} 
+                className="logoutButton" 
+                style={{width: 'auto'}}
+                children={
+                  <Power_off />
+                }
+                tooltip={'Log out'}
+              />
             </div>
             <form onSubmit={handleSubmit(this.submitForm)} className="form">
-                  <div className="input-wrap">
-                    <Field
-                      component={TextField}
-                      // floatingLabelFixed={true}
-                      placeholder="Write your todo here..."
-                      // floatingLabelText={'Add one to-do here:'}
-                      name="name"
-                      className="input-wrapper input"
-                    />
-                    <IconButton className="addButton" aria-label="Add" type="submit">
-                      <Add_Circle_Outline/>
-                    </IconButton>
-                  </div>
+              <div className="input-wrap">
+                <Field
+                  component={TextField}
+                  placeholder="Write your todo here..."
+                  name="name"
+                  className="input-wrapper input"
+                />
+                <IconButton className="addButton" aria-label="Add" type="submit">
+                  <Add_Circle_Outline/>
+                </IconButton>
+              </div>
             </form>
           <div className="todoList">
-          {todos.map((todo: Todo ) => {
+          {filteredTodos.map((todo: Todo ) => {
             return (
               <li key={todo.id} className="todoItem">
               <IconButton className="checkButton" aria-label="Check" onClick={() => this.handleCheck(todo)}>
@@ -116,7 +130,7 @@ export default class Home extends React.Component<Props,{}> {
           </div>
           <EditTodo />
           <div className="page-footer">
-            here will be the footer
+            <span>&copy; {year} Gabriela Bozbici</span>
           </div>
       </div>
       );

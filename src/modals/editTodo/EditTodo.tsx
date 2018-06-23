@@ -34,30 +34,18 @@ export default class EditTodo extends React.PureComponent<Props, {}> {
           open={activeModal === 'editTodo' ? true : false}
           onRequestClose={this.handleClose}
         >
-          Edit yout todo here.
         <form onSubmit={handleSubmit(this.submitForm)}>
           <div className="input-wrap">
             <Field
               component={TextField}
               floatingLabelFixed={true}
-              floatingLabelText={'Todo'}
+              floatingLabelText={'Previous todo text:'}
               fullWidth={true}
               name="name"
               className="input-wrapper input"
             />
           </div>
-          <div className="input-wrap">
-            <Field
-              component={TextField}
-              floatingLabelFixed={true}
-              floatingLabelText={'Description'}
-              fullWidth={true}
-              name="description"
-              className="input-wrapper input"
-            />
-          </div>
           <RaisedButton
-            fullWidth={true}
             type="submit"
             label="Submit"
             primary={true}
@@ -67,6 +55,7 @@ export default class EditTodo extends React.PureComponent<Props, {}> {
             label="Cancel"
             primary={true}
             onTouchTap={this.handleClose}
+            style={{ marginLeft: '40px', color: 'black' }}
           />
         </form>
         </Dialog>

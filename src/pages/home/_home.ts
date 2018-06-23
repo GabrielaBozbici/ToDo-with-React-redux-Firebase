@@ -21,6 +21,7 @@ export interface DispatchProps {
 
 export interface OwnOptionalProps {
   handleSubmit: any;
+  reset: any;
 }
 
 export interface OwnProps extends Partial<OwnOptionalProps> { }

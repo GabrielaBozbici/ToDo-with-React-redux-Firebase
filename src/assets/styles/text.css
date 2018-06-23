@@ -1,38 +1,31 @@
-@import './variables.scss';
 h1 {
   font-size: 28px;
   font-weight: normal;
-  color: $TextDark;
-}
+  color: #3f4a77; }
 
 h1.big {
   font-size: 32px;
   font-weight: bold;
-  color: $TextDark;
-}
+  color: #3f4a77; }
 
 h1.page-header {
   margin: 0;
-  color: $TextDark;
-}
+  color: #3f4a77; }
 
 h2 {
   font-size: 12px;
   text-transform: uppercase;
   font-weight: bold;
-  color: $TextDark;
-}
+  color: #3f4a77; }
 
 p,
 span {
   font-size: 16px;
-  color: $TextDark;
-}
+  color: #3f4a77; }
+
 button p, button span {
   color: #fff;
-  font-size: 11px;
-}
+  font-size: 11px; }
 
 .center {
-  text-align: center;
-}
+  text-align: center; }
