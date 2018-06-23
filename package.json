@@ -2,6 +2,7 @@
   "name": "demo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://gabrielabozbici.github.io/ToDo-with-React-redux-Firebase/",
   "dependencies": {
     "@firebase/firestore": "^0.5.2",
     "@types/grid-styled": "file:./.packages/grid-styled",
@@ -25,6 +26,7 @@
     "@types/redux-promise": "^0.5.24",
     "@types/redux-responsive": "file:./.packages/redux-responsive",
     "firebase": "^4.13.1",
+    "gh-pages": "^1.2.0",
     "grid-styled": "^2.0.0-4",
     "lodash": "^4.17.4",
     "material-ui": "^0.16.7",
@@ -58,6 +60,8 @@
     "build-js": "react-scripts-ts build",
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   }
 }
